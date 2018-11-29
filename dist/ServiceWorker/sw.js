@@ -12,8 +12,6 @@ toolbox.precache([
     'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
 ]);
 
-toolbox.router.get('produtos.json', toolbox.networkFirst);
-
 toolbox.router.get('*.html', toolbox.cacheFirst);
 toolbox.router.get('*.css', toolbox.cacheFirst);
 toolbox.router.get('*.js', toolbox.cacheFirst);
