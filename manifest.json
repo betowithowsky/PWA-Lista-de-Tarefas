@@ -6,9 +6,10 @@
     "start_url": "/PWA-Lista-de-Tarefas/",
     "display": "standalone",
     "theme_color": "#fafafa",
+    "background_color": "#fafafa",
     "icons": [
       {
-        "src": "android-icon-192x192.png",
+        "src": "/PWA-Lista-de-Tarefas/android-icon-192x192.png",
         "sizes": "192x192",
         "type": "png"
       }
