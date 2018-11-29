@@ -9,7 +9,11 @@
     "background_color": "#fafafa",
     "icons": [
       {
-        "src": "/PWA-Lista-de-Tarefas/android-icon-192x192.png",
+        "src": "PWA-Lista-de-Tarefas/android-icon-192x192.png",
+        "sizes": "512x512",
+        "type": "png"
+      },{
+        "src": "PWA-Lista-de-Tarefas/android-icon-192x192.png",
         "sizes": "192x192",
         "type": "png"
       }
