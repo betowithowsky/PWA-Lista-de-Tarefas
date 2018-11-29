@@ -1,45 +1,18 @@
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('dist/ServiceWorker/sw.js').then(function(registration) {
-        // Registration was successful
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }).catch(function(err) {
-        // registration failed :(
-        console.log('ServiceWorker registration failed: ', err);
-      });
-    });
-  }
+importScripts('https://cdnjs.cloudflare.com/ajax/libs/sw-toolbox/3.6.1/sw-toolbox.js');
 
-  var CACHE_NAME = 'my-site-cache-v1';
-  var urlsToCache = [
-    '/',
-    'controller/TarefasController.js',
-    'dist/js/index.js',
+toolbox.options.debug = true;
+
+toolbox.precache([
+    'index.html',
+    'classes/Utils.js',
     'models/Tarefa.js',
-    'classes/Utils.js'
-  ];
-  
-  self.addEventListener('install', function(event) {
-    // Perform install steps
-    event.waitUntil(
-      caches.open(CACHE_NAME)
-        .then(function(cache) {
-          console.log('Opened cache');
-          return cache.addAll(urlsToCache);
-        })
-    );
-  });
+    'dist/js/index.js',
+    'controller/TarefasController.js',
+    'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
+]);
 
-  self.addEventListener('fetch', function(event) {
-    event.respondWith(
-      caches.match(event.request)
-        .then(function(response) {
-          // Cache hit - return response
-          if (response) {
-            return response;
-          }
-          return fetch(event.request);
-        }
-      )
-    );
-  });
+toolbox.router.get('produtos.json', toolbox.networkFirst);
+
+toolbox.router.get('*.html', toolbox.cacheFirst);
+toolbox.router.get('*.css', toolbox.cacheFirst);
+toolbox.router.get('*.js', toolbox.cacheFirst);
