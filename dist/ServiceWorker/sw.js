@@ -1,6 +1,6 @@
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/sw.js').then(function(registration) {
+      navigator.serviceWorker.register('dist/ServiceWorker/sw.js').then(function(registration) {
         // Registration was successful
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
       }).catch(function(err) {
@@ -13,8 +13,10 @@ if ('serviceWorker' in navigator) {
   var CACHE_NAME = 'my-site-cache-v1';
   var urlsToCache = [
     '/',
-    '/styles/main.css',
-    '/script/main.js'
+    'controller/TarefasController.js',
+    'dist/js/index.js',
+    'models/Tarefa.js',
+    'classes/Utils.js'
   ];
   
   self.addEventListener('install', function(event) {
