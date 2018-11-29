@@ -1,0 +1,15 @@
+{
+    "name": "Lista de Tarefas",
+    "short_name": "LT",
+    "description": "PWA Lista de tarefas - Senac - Desenvolvedor Roberto Withowsky",
+    "lang": "pt-BR",
+    "start_url": "/",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "android-icon-192x192.png",
+        "sizes": "192x192",
+        "type": "png"
+      }
+    ]
+  }

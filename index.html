@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Controlador de Tarefas</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="LT">
+    <meta name="apple-mobile-web-app-title" content="LT">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="png" sizes="192x192" href="android-icon-192x192.png">
+    <link rel="apple-touch-icon" type="png" sizes="192x192" href="android-icon-192x192.png">
+
+
+  <style>
+    .topo {
+      background: rgb(221, 221, 221);
+      padding: 10px;
+      align-items: center;
+    }
+
+    .terminado {
+      text-decoration: line-through;
+    }
+
+    .alert {
+      margin: 5px;
+    }
+
+    /* max device width */
+
+    @media screen and (max-device-width: 480px) {
+
+      .titulo {
+        text-align: center;
+
+      }
+
+      .btn-table-novaTarefa {
+        text-align: center;
+        width: 100%;
+        margin: 0px 10px;
+      }
+
+      .btn-deletar {
+        width: 100%;
+        margin: 10px 0px;
+      }
+
+      .titulo-novaTarefa {
+        text-align: center;
+        width: 100%;
+      }
+
+
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Content here -->
+
+    <div class="titulo row topo">
+      <div class=" col-md-8 col-sm-12">
+        <h4>Lista de Tarefas</h4>
+      </div>
+      <div class="col-md-2 col-sm-12">
+        <input type="checkbox" class="form-check-input" id="mostrar-terminadas"> Mostrar Terminadas</div>
+      <div class="col-md-2 col-sm-12">
+        <button type="button" class="btn btn-danger btn-deletar">Remover Terminadas</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container" id="tabela">
+
+    <div class="alert alert-success" role="alert" style="display: none">
+      Tarefa Adicionada com Sucesso!
+    </div>
+
+    <div class="alert alert-danger alert-remover" role="alert" style="display: none">
+      Tarefas Removidas com Sucesso!
+    </div>
+
+    <div class="row tabela">
+      <table class="table table-striped col-md-12">
+
+        <thead>
+          <tr>
+            <th scope="col">Terminada</th>
+            <th style="width: 70%" scope="col">Tarefa</th>
+            <th scope="col">Prazo</th>
+          </tr>
+        </thead>
+
+        <tbody id="table-tarefas">
+
+        </tbody>
+
+      </table>
+
+      <button type="button" class="btn btn-info btn-table-novaTarefa">Nova Tarefa</button>
+
+    </div>
+
+  </div>
+
+  <div class="container" id="tabela-finalizadas" style="display: none; margin-top: 10px; border: 1px red solid; border-radius: 5px; padding: 30px">
+
+    <div class="row tabela-finalizadas">
+      <h4 style="color: red">Finalizadas</h4>
+      <table class="table table-striped col-md-12">
+
+        <thead>
+          <tr>
+            <th scope="col">Terminada</th>
+            <th style="width: 70%" scope="col">Tarefa</th>
+            <th scope="col">Prazo</th>
+          </tr>
+        </thead>
+
+        <tbody id="table-tarefas-finalizadas">
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+  <div class="container" id="nova-tarefa" style="display: none">
+
+    <div class="row">
+      <h1 class="titulo-novaTarefa">Nova Tarefa</h1>
+    </div>
+
+    <div class="row">
+
+      <form class="col-md-12" id="form-tarefa-create" style="width: 100%;">
+        <div class="alert alert-danger" role="alert" style="display: none" id="error">
+          Preencha todos os campos!
+        </div>
+        <div class="form-group">
+          <label for="nomeTarefa">Tarefa</label>
+          <input type="text" class="form-control" name="nomeTarefa" id="nomeTarefa" placeholder="ex: Tarefa 1">
+        </div>
+        <div class="form-group">
+          <label for="dataPrazo">Prazo</label>
+          <input type="date" class="form-control" id="dataPrazo" name="dataPrazo">
+        </div>
+
+        <button type="button" class="btn btn-secondary btn-cancelar">Canelar</button>
+
+        <button type="submit" class="btn btn-primary btn-nova-tabela">Nova Tarefa</button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  </div>
+
+  <script src="dist/ServiceWorker/sw.js"></script>
+  <script src="classes/Utils.js"></script>
+  <script src="models/Tarefa.js"></script>
+  <script src="controller/TarefasController.js"></script>
+  <script src="dist/js/index.js"></script>
+
+</body>
+
+</html>
