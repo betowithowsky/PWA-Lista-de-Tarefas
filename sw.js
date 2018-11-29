@@ -12,6 +12,12 @@ toolbox.precache([
     'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
 ]);
 
-toolbox.router.get('*.html', toolbox.cacheFirst);
-toolbox.router.get('*.css', toolbox.cacheFirst);
-toolbox.router.get('*.js', toolbox.cacheFirst);
+self.toolbox.router.get('/(.*)', function(req, vals, opts) {
+    return toolbox.networkFirst(req, vals, opts)
+      .catch(function(error) {
+        if (req.method === 'GET' && req.headers.get('accept').includes('text/html')) {
+          return toolbox.cacheOnly(new Request('/'), vals, opts);
+        }
+        throw error;
+      });
+  });
