@@ -3,7 +3,7 @@
     "short_name": "LT",
     "description": "PWA Lista de tarefas - Senac - Desenvolvedor Roberto Withowsky",
     "lang": "pt-BR",
-    "start_url": "/",
+    "start_url": "/PWA-Lista-de-Tarefas/",
     "display": "standalone",
     "theme_color": "#ef785a",
     "icons": [
