@@ -15,3 +15,20 @@ toolbox.precache([
 toolbox.router.get('*.html', toolbox.cacheFirst);
 toolbox.router.get('*.css', toolbox.cacheFirst);
 toolbox.router.get('*.js', toolbox.cacheFirst);
+
+
+self.addEventListener('fetch', function(event) {
+
+    console.log(event.request.url);
+    
+    event.respondWith(
+    
+    caches.match(event.request).then(function(response) {
+    
+    return response || fetch(event.request);
+    
+    })
+    
+    );
+    
+    });
