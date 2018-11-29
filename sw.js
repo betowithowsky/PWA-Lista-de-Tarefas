@@ -1,4 +1,4 @@
-importScripts('/dist/ServiceWorker/sw-toolbox.js');
+importScripts('dist/ServiceWorker/sw-toolbox.js');
 
 
 toolbox.options.debug = true;
