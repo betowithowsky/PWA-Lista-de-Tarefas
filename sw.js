@@ -12,12 +12,10 @@ toolbox.precache([
     'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
 ]);
 
-self.toolbox.router.get('/(.*)', function(req, vals, opts) {
-    return toolbox.networkFirst(req, vals, opts)
-      .catch(function(error) {
-        if (req.method === 'GET' && req.headers.get('accept').includes('text/html')) {
-          return toolbox.cacheOnly(new Request('/'), vals, opts);
-        }
-        throw error;
-      });
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+      fetch(event.request).catch(function() {
+        return caches.match(event.request);
+      })
+    );
   });
