@@ -176,8 +176,7 @@
   </div>
 
   </div>
-
-  <script src="dist/ServiceWorker/sw.js"></script>
+  
   <script src="classes/Utils.js"></script>
   <script src="models/Tarefa.js"></script>
   <script src="controller/TarefasController.js"></script>
@@ -187,7 +186,7 @@
     // https://developers.google.com/web/fundamentals/primers/service-workers/
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
-            navigator.serviceWorker.register('dist/ServiceWorker/sw.js').then(function (registration) {
+            navigator.serviceWorker.register('/dist/ServiceWorker/sw.js').then(function (registration) {
                 // Registration was successful
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
             }).catch(function (err) {

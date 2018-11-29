@@ -1,4 +1,5 @@
-importScripts('https://cdnjs.cloudflare.com/ajax/libs/sw-toolbox/3.6.1/sw-toolbox.js');
+importScripts('dist/ServiceWorker/sw-toolbox.js');
+
 
 toolbox.options.debug = true;
 
