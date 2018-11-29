@@ -12,10 +12,4 @@ toolbox.precache([
     'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'
 ]);
 
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-      fetch(event.request).catch(function() {
-        return caches.match(event.request);
-      })
-    );
-  });
+toolbox.router.get('/PWA-Lista-de-Tarefas/(.*)', toolbox.networkFirst);
